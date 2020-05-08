@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:replace="common/header" ></div>
+<body>
+<h1>ログイン</h1>
+<form th:action="@{/login}" th:object="${login}" id="loginform" method="post">
+<th:block>ユーザー名</th:block>
+<input type="text" id="user" th:value="*{username}"/>
+<br>
+<a class="btn btn-primary btn-lg" data-toggle="modal" data-target="#loginModal">
+ユーザ検索(ajax)
+</a>
+<a class="btn btn-primary btn-lg" id="buttonP">
+ユーザ検索(POST)
+</a>
+</form>
+<div th:replace="modal/mlogin" ></div>
+<div th:replace="common/footer" ></div>
+<script type="text/javascript">
+$(function(){
+
+	$("#buttonP").click(function() {
+		$("#loginform").submit();
+
+	});
+
+});
+</script>
+</body>
+</html>
